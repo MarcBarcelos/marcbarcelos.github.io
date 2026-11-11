@@ -1,0 +1,11 @@
+# Marc Alexander Barcelos
+
+Marc Alexander Barcelos is a PhD Fellow at TEXT: Center for Contemporary Cultures of Text, Comparative Literature and Rhetoric, Aarhus University (2025–2028), supervised by Mads Rosendahl Thomsen and Rebekah Brita Baglini. Marc builds interpretable measures of literary style to study authorship, style, and reception in human–AI co-written fiction.
+
+- Home: https://marcbarcelos.github.io/
+- Research: https://marcbarcelos.github.io/#research
+- Papers: https://marcbarcelos.github.io/#papers
+- Talks: https://marcbarcelos.github.io/#talks
+- CV (PDF): https://marcbarcelos.github.io/files/cv.pdf
+- Contact: marcb@cc.au.dk
+- ORCID: https://orcid.org/0000-0002-3027-8017

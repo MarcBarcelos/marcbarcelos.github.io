@@ -1,0 +1,68 @@
+baseURL: "https://marcbarcelos.github.io/"
+title: "Marc Alexander Barcelos"
+locale: en-US
+enableRobotsTXT: false
+
+params:
+  description: "PhD Fellow, TEXT: Center for Contemporary Cultures of Text, Aarhus University"
+  author: "Marc Alexander Barcelos"
+  email: "marcb@cc.au.dk"
+  role: "PhD Fellow"
+  unit: "TEXT: Center for Contemporary Cultures of Text"
+  department: "Comparative Literature and Rhetoric, School of Communication and Culture"
+  institution: "Aarhus University"
+  tagline: "I build interpretable measures of literary style to study how AI is changing fiction."
+  photo: "images/photo.jpg"
+  cv: "files/cv.pdf"
+  social:
+    - name: "ORCID"
+      url: "https://orcid.org/0000-0002-3027-8017"
+    - name: "LinkedIn"
+      url: "https://www.linkedin.com/in/marc-barcelos-76874518a/"
+    - name: "Bluesky"
+      url: "https://bsky.app/profile/marcbarc.bsky.social"
+    - name: "Aarhus University"
+      url: "https://pure.au.dk/portal/en/persons/marcb%40cc.au.dk"
+    - name: "Scopus"
+      url: "https://www.scopus.com/authid/detail.uri?authorId=58205559800"
+  mysite:
+    credit: false
+    discovery: false
+    design:
+      reference: "https://www.megmindlin.com"
+      concept: "adapted from the reference site, lighter: white page with one ink-black research band; uppercase Bodoni display headings, Instrument Sans body; large wordmark name; natural-aspect photo offset on a coral block; asymmetric grids; coral accent (deep coral for text links)"
+
+menu:
+  main:
+    - name: About
+      url: "/#about"
+      weight: 10
+    - name: Research
+      url: "/#research"
+      weight: 20
+    - name: Papers
+      url: "/#papers"
+      weight: 30
+    - name: Talks
+      url: "/#talks"
+      weight: 40
+    - name: Teaching
+      url: "/#teaching"
+      weight: 50
+    - name: CV
+      url: "/files/cv.pdf"
+      weight: 60
+    - name: Contact
+      url: "/#contact"
+      weight: 70
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home: ["HTML"]
+  section: ["HTML"]
+
+disableKinds: ["taxonomy", "term", "rss"]

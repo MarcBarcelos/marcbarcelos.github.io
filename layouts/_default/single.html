@@ -1,0 +1,10 @@
+{{ define "main" }}
+<article class="band">
+  <div class="wrap prose-page">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with .Date }}{{ if not $.Date.IsZero }}<p class="meta">{{ $.Date.Format "2 January 2006" }}</p>{{ end }}{{ end }}
+    <div class="prose">{{ .Content }}</div>
+    <p class="back"><a href="{{ "/" | relURL }}">&larr; Back to the homepage</a></p>
+  </div>
+</article>
+{{ end }}

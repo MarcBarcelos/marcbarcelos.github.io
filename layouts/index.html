@@ -1,0 +1,230 @@
+{{ define "main" }}
+{{- $p := site.Params }}
+{{- $d := hugo.Data }}
+{{- $statusLabel := dict "published" "Published" "accepted" "Accepted" "revise and resubmit" "R&R" "under review" "Under review" "working paper" "Working paper" "work in progress" "In preparation" }}
+
+<section class="hero band" aria-labelledby="hero-name">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="kicker">{{ $p.role }} &middot; {{ $p.institution }}</p>
+      <h1 id="hero-name" class="wordmark">{{ $p.author }}</h1>
+      <p class="tagline">{{ $p.tagline }}</p>
+      <p class="affil">
+        {{ $p.unit }}<br>
+        {{ $p.department }}<br>
+        <span class="inst">{{ $p.institution }}</span>
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="{{ $p.cv | relURL }}">CV (PDF)</a>
+        <a class="btn btn-ghost" href="mailto:{{ $p.email }}">Email</a>
+      </div>
+      <ul class="social">
+        {{- range $p.social }}
+        <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
+        {{- end }}
+      </ul>
+    </div>
+    <figure class="hero-photo">
+      <img src="{{ $p.photo | relURL }}" width="192" height="288" alt="Portrait of {{ $p.author }}">
+    </figure>
+  </div>
+</section>
+
+<section id="about" class="band section" aria-labelledby="about-h">
+  <div class="wrap split">
+    <h2 id="about-h" class="section-title">About</h2>
+    <div class="split-main">
+      <div class="prose bio">{{ .Content }}</div>
+    </div>
+    <aside class="split-aside facts">
+      {{- with .Params.supervisors }}
+      <h3>Supervisors</h3>
+      <ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+      {{- end }}
+      {{- with .Params.affiliations }}
+      <h3>Affiliations</h3>
+      <ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+      {{- end }}
+      {{- with .Params.interests }}
+      <h3>Research interests</h3>
+      <ul class="tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+      {{- end }}
+    </aside>
+  </div>
+</section>
+
+{{- with $d.research }}
+<section id="research" class="band band-ink section" aria-labelledby="research-h">
+  <div class="wrap">
+    <div class="research-head">
+      <h2 id="research-h" class="section-title">Research</h2>
+      <p class="research-years">PhD project &middot; {{ .framework.years }}</p>
+    </div>
+    <h3 class="framework-title">
+      {{- range $i, $pl := .framework.pillars }}
+      <span class="pillar-line"><span class="pillar-q">{{ $pl.question }}</span><span class="pillar-meta"><b>{{ $pl.name }}</b> {{ $pl.facets }}</span></span>
+      {{- end }}
+    </h3>
+    <p class="framework-sub">{{ .framework.subtitle }}</p>
+    <div class="framework-body">
+      <p>{{ .framework.summary }}</p>
+      <p class="muted">{{ .framework.where }}</p>
+    </div>
+
+    <ol class="projects">
+      {{- range $i, $pr := .projects }}
+      <li class="project">
+        <span class="project-num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+        <div class="project-body">
+          <h4 class="project-title">{{ $pr.title }} <span class="badge badge-{{ lower $pr.status }}">{{ $pr.status }}</span></h4>
+          {{- range $pr.body }}<p>{{ . }}</p>{{ end }}
+          {{- with $pr.dimensions }}
+          <p class="label">The ten dimensions</p>
+          <ul class="chips">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+          {{- end }}
+          {{- with $pr.findings }}
+          <p class="label">{{ $pr.findings_label }}</p>
+          <p>{{ . }}</p>
+          {{- end }}
+          {{- with $pr.questions }}
+          <p class="label">Questions</p>
+          <ul class="questions">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+          {{- end }}
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </div>
+</section>
+{{- end }}
+
+{{- with $d.papers }}
+{{- $jmp := where . "job_market_paper" true }}
+{{- $working := where (where . "status" "ne" "published") "job_market_paper" "ne" true }}
+{{- $pubs := where (where . "status" "published") "job_market_paper" "ne" true }}
+<section id="papers" class="band section" aria-labelledby="papers-h">
+  <div class="wrap split">
+    <h2 id="papers-h" class="section-title">Papers</h2>
+    <div class="split-main">
+      {{- range $jmp }}
+      <article class="jmp">
+        <p class="label">Job market paper</p>
+        <h3 class="paper-title">{{ if .pdf }}<a href="{{ .pdf | relURL }}">{{ .title }}</a>{{ else }}{{ .title }}{{ end }} <span class="badge">{{ index $statusLabel .status | default .status }}</span></h3>
+        <p class="meta">{{ delimit .authors ", " }}</p>
+        {{ with .abstract }}<p>{{ . }}</p>{{ end }}
+      </article>
+      {{- end }}
+      {{- with $working }}
+      <h3 class="sub">Working papers</h3>
+      <ul class="papers">
+        {{- range . }}{{ partial "paper.html" (dict "p" . "labels" $statusLabel) }}{{ end }}
+      </ul>
+      {{- end }}
+      {{- with $pubs }}
+      <h3 class="sub">Publications</h3>
+      <ul class="papers">
+        {{- range . }}{{ partial "paper.html" (dict "p" . "labels" $statusLabel) }}{{ end }}
+      </ul>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+{{- with $d.talks }}
+<section id="talks" class="band band-soft section" aria-labelledby="talks-h">
+  <div class="wrap split">
+    <h2 id="talks-h" class="section-title">Talks</h2>
+    <ul class="split-main dated">
+      {{- range . }}
+      <li>
+        <span class="date">{{ .date }}</span>
+        <div>
+          {{ with .role }}<span class="role">{{ . }}:</span> {{ end }}<span class="item-title">“{{ .title }}”</span>{{ with .with }} <span class="meta">with {{ . }}</span>{{ end }}
+          <p class="meta">{{ .venue }}</p>
+        </div>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+{{- end }}
+
+{{- with $d.news }}
+<section id="news" class="band section" aria-labelledby="news-h">
+  <div class="wrap split">
+    <h2 id="news-h" class="section-title">News</h2>
+    <ol class="split-main timeline">
+      {{- range first 6 . }}
+      <li><span class="date">{{ .date }}</span><p>{{ .text }}</p></li>
+      {{- end }}
+    </ol>
+  </div>
+</section>
+{{- end }}
+
+<section id="teaching" class="band section section-tight" aria-labelledby="teaching-h">
+  <div class="wrap pair">
+    {{- with $d.teaching }}
+    <div>
+      <h2 id="teaching-h" class="section-title">Teaching</h2>
+      <ul class="rows">
+        {{- range . }}
+        <li><span class="item-title">{{ .course }}</span><span class="meta">{{ .role }}, {{ .institution }}{{ with .term }}, {{ . }}{{ end }}</span></li>
+        {{- end }}
+      </ul>
+    </div>
+    {{- end }}
+    {{- with $d.awards }}
+    <div id="awards">
+      <h2 class="section-title">Awards &amp; fellowships</h2>
+      <ul class="rows awards">
+        {{- range . }}
+        <li><span>{{ .name }}</span><span class="year">{{ .year }}</span></li>
+        {{- end }}
+      </ul>
+    </div>
+    {{- end }}
+  </div>
+</section>
+
+{{- with $d.background }}
+<section id="background" class="band section section-tight" aria-labelledby="bg-h">
+  <div class="wrap">
+    <h2 id="bg-h" class="section-title">Background</h2>
+    <div class="pair pair-even">
+      <div>
+        <h3 class="sub">Education</h3>
+        <ul class="rows cv">
+          {{- range .education }}
+          <li><span class="item-title">{{ .degree }}</span><span class="meta">{{ .institution }} &middot; {{ .years }}</span>{{ with .note }}<span class="note">{{ . }}</span>{{ end }}</li>
+          {{- end }}
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub">Experience</h3>
+        <ul class="rows cv">
+          {{- range .experience }}
+          <li><span class="item-title">{{ .role }}</span><span class="meta">{{ .place }}{{ with .years }} &middot; {{ . }}{{ end }}</span>{{ with .note }}<span class="note">{{ . }}</span>{{ end }}</li>
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{{- end }}
+
+<section id="contact" class="band band-coral section" aria-labelledby="contact-h">
+  <div class="wrap contact">
+    <h2 id="contact-h" class="contact-title">Get in touch</h2>
+    <p class="contact-email"><a href="mailto:{{ $p.email }}">{{ $p.email }}</a></p>
+    <p class="contact-addr">{{ $p.unit }}<br>School of Communication and Culture, {{ $p.institution }}<br>Aarhus, Denmark</p>
+    <ul class="social">
+      {{- range $p.social }}
+      <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
+      {{- end }}
+      <li><a href="{{ $p.cv | relURL }}">CV (PDF)</a></li>
+    </ul>
+  </div>
+</section>
+{{ end }}

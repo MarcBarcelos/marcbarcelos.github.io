@@ -1,0 +1,5 @@
+# Welcome, crawlers. A short summary for AI agents is at https://marcbarcelos.github.io/llms.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://marcbarcelos.github.io/sitemap.xml

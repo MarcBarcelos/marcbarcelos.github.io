@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="band">
+  <div class="wrap prose-page">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="prose">{{ .Content }}</div>
+    <ul class="plain-list">
+      {{ range .Pages }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if not .Date.IsZero }} <span class="meta">{{ .Date.Format "January 2006" }}</span>{{ end }}</li>
+      {{ end }}
+    </ul>
+    <p class="back"><a href="{{ "/" | relURL }}">&larr; Back to the homepage</a></p>
+  </div>
+</section>
+{{ end }}

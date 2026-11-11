@@ -1,0 +1,7 @@
+{{- $p := .p -}}
+{{- $href := cond (ne $p.pdf "") ($p.pdf | relURL) $p.link -}}
+<li class="paper">
+  <span class="meta">{{ delimit $p.authors ", " }}{{ with $p.year }} ({{ . }}){{ end }}</span>
+  <span class="paper-title">{{ if $href }}<a href="{{ $href }}"{{ if hasPrefix $href "http" }} target="_blank" rel="noopener"{{ end }}>{{ $p.title }}</a>{{ else }}{{ $p.title }}{{ end }}</span>
+  <span class="meta">{{ with $p.venue }}<i>{{ . }}</i> {{ end }}<span class="badge">{{ index .labels $p.status | default $p.status }}</span></span>
+</li>

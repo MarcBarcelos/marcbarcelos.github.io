@@ -1,0 +1,32 @@
+<header class="site-header">
+  <nav class="nav" aria-label="Main">
+    <a class="nav-name" href="{{ "/" | relURL }}">{{ site.Params.author }}</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+      <span class="visually-hidden">Menu</span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      {{- range site.Menus.main }}
+      {{- $url := cond (hasPrefix .URL "http") .URL (.URL | relURL) }}
+      <li><a href="{{ $url }}"{{ if eq .Name "CV" }} class="nav-cv"{{ end }}>{{ .Name }}</a></li>
+      {{- end }}
+    </ul>
+  </nav>
+</header>
+<script>
+(function () {
+  var b = document.querySelector('.nav-toggle'), h = document.querySelector('.site-header');
+  if (!b) return;
+  b.addEventListener('click', function () {
+    var open = b.getAttribute('aria-expanded') === 'true';
+    b.setAttribute('aria-expanded', String(!open));
+    h.classList.toggle('is-open', !open);
+  });
+  document.querySelectorAll('.nav-links a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      b.setAttribute('aria-expanded', 'false');
+      h.classList.remove('is-open');
+    });
+  });
+})();
+</script>
