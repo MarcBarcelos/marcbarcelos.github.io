@@ -2,7 +2,7 @@ framework:
   title: "Who Wrote It, How It Reads, Where It Lands"
   subtitle: "Measuring the Gaps Between Authorship, Style, and Reception"
   years: "2025–2028"
-  where: "TEXT: Center for Contemporary Cultures of Text, Aarhus University. Supervisor: Mads Rosendahl Thomsen."
+  where: "TEXT: Center for Contemporary Cultures of Text, Aarhus University. Supervisor: Mads Rosendahl Thomsen and Rebekah Brita Baglini."
   summary: "Authorship, style, and reception are usually studied separately, and they have never been measured together on the same texts and readers. Human–LLM co-writing is a clear case where the three come apart, which makes it the right place to build a unified, interpretable framework for measuring them."
   pillars:
     - name: "Authorship"
@@ -16,15 +16,13 @@ framework:
       facets: "audience, perceived authorship, judgment"
 
 projects:
-  - title: "Interpretable Dimensions of Narrative Prose"
+  - title: "The Expressive Profile Pipeline: Interpretable Dimensions of Narrative Prose"
     status: "Current"
     body:
-      - "More than 100 stylometric measures (lexical, syntactic, structural, character-level, affective, and semantic) are reduced through exploratory factor analysis to ten named dimensions of style. The reference corpus spans narrative prose fiction from novels and novellas (Chicago Corpus) to short stories and flash fiction (Electric Literature’s Recommended Reading, SmokeLong Quarterly, Flash Fiction Online) and fanfiction (Archive of Our Own)."
+      - "More than 70 stylometric measures (lexical, syntactic, structural, character-level, affective, and semantic) are reduced through exploratory factor analysis to ten named dimensions of style. The reference corpus spans narrative prose fiction from novels and novellas (Chicago Corpus) to short stories and flash fiction (Electric Literature’s Recommended Reading, SmokeLong Quarterly, Flash Fiction Online) and fanfiction (Archive of Our Own)."
       - "A frozen reference model keeps each dimension’s meaning stable across contexts, and its stability across sources is assessed with Tucker’s congruence and multi-group confirmatory factor analysis. Combinations of dimensions can recover recognizable qualities that close readers describe, such as Twain’s vernacular voice, Kerouac’s breathless urgency, or Woolf’s stream of consciousness."
     dimensions: ["Syntactic Complexity", "Lexical Sophistication", "Negative Affect", "Lexical Richness", "Repetitiveness", "Concreteness", "Conversationality", "Positive Affect", "Narrative Drift", "Structural Variability"]
-    findings_label: "Earlier findings"
-    findings: "Fanfiction communities develop distinct styles after a period of conventionalization. In a study of 238 original works from AO3, each continued by a language model (Qwen 3.5 9B), the model followed the writer’s style on 7 of 8 dimensions but within a narrower range, pulling toward the mean. Its prose was more lexically sophisticated and thematically focused, while human writers varied their syntax more."
-
+    
   - title: "Human–AI Fiction in the Wild"
     status: "Upcoming"
     body:

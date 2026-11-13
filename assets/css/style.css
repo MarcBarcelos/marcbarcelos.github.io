@@ -245,9 +245,8 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 .band-ink .label { color: var(--color-ink-muted); }
 .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .chips li {
-  font-size: 0.85rem; padding: 0.3rem 0.8rem; border: 1px solid #4a4a4a; border-radius: 999px;
+  font-size: 0.85rem; padding: 0.3rem 0.8rem; border: 1px solid var(--color-coral); border-radius: 999px;
 }
-.chips li:nth-child(3n+1) { border-color: var(--color-coral); }
 .questions { counter-reset: q; display: grid; gap: 0.6rem; }
 .questions li {
   font-family: var(--font-display); font-size: 1.2rem; line-height: 1.35;

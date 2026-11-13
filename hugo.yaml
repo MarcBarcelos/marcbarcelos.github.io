@@ -15,16 +15,16 @@ params:
   photo: "images/photo.jpg"
   cv: "files/cv.pdf"
   social:
+    - name: "Aarhus University"
+      url: "https://pure.au.dk/portal/en/persons/marcb%40cc.au.dk"
     - name: "ORCID"
       url: "https://orcid.org/0000-0002-3027-8017"
     - name: "LinkedIn"
       url: "https://www.linkedin.com/in/marc-barcelos-76874518a/"
-    - name: "Bluesky"
-      url: "https://bsky.app/profile/marcbarc.bsky.social"
-    - name: "Aarhus University"
-      url: "https://pure.au.dk/portal/en/persons/marcb%40cc.au.dk"
     - name: "Scopus"
       url: "https://www.scopus.com/authid/detail.uri?authorId=58205559800"
+    - name: "Bluesky"
+      url: "https://bsky.app/profile/marcbarc.bsky.social"
   mysite:
     credit: false
     discovery: false
@@ -49,6 +49,9 @@ menu:
     - name: Teaching
       url: "/#teaching"
       weight: 50
+    - name: Background
+      url: "/#background"
+      weight: 55
     - name: CV
       url: "/files/cv.pdf"
       weight: 60

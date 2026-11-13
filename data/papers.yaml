@@ -1,8 +1,18 @@
 # Papers and working papers. Newest first within each group.
 # status: published | accepted | revise and resubmit | under review | working paper | work in progress
-- title: "Temporal Adaptation and Anticipation in Musical Duos: Measuring Interpersonal Coordination in Naturalistic Performance"
-  authors: ["Marc Alexander Barcelos", "Peter Keller"]
-  year: ""
+- title: "Who Wrote It, How It Reads, Where It Lands: A Quantitative Framework for Measuring the Gaps Between Authorship, Style, and Reception"
+  authors: ["Marc Alexander Barcelos"]
+  year: 2027
+  status: "work in progress"
+  venue: ""
+  pdf: ""
+  link: ""
+  abstract: ""
+  job_market_paper: false
+
+- title: "Introducing the Expressive Profile Pipeline for Quantifying Authorial Voice (working title)"
+  authors: ["Marc Alexander Barcelos"]
+  year: 2027
   status: "work in progress"
   venue: ""
   pdf: ""
@@ -11,21 +21,11 @@
   job_market_paper: false
 
 - title: "A Qualitative Assessment of the Use of Emotions in Abe's Public Policy Towards Indonesia, the Philippines and Vietnam"
-  authors: ["Marc Alexander Barcelos", "R. Yamamoto", "T. Iwami"]
-  year: ""
+  authors: ["R. Yamamoto", "Marc Alexander Barcelos", "T. Iwami"]
+  year: 2025
   status: "work in progress"
   venue: ""
   pdf: ""
   link: ""
-  abstract: ""
-  job_market_paper: false
-
-- title: "The administration of Exendin-4 and CCK affects food intake differentially in female and male rats tested on an alternate day fasting paradigm"
-  authors: ["T. Lopez", "M. Barcelos", "Y. Treesukosol"]
-  year: 2023
-  status: "published"
-  venue: "Neuroscience Letters 808, 137275"
-  pdf: ""
-  link: "https://doi.org/10.1016/j.neulet.2023.137275"
   abstract: ""
   job_market_paper: false

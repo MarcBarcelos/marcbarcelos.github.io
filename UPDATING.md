@@ -39,7 +39,7 @@ Edit `data/teaching.yaml`:
 
 ## 4. Add a talk
 
-Edit `data/talks.yaml` and add an entry at the top (`with:` and `role:` are optional).
+Edit `data/talks.yaml` and add an entry at the top of its group. Set `type:` to `invited`, `conference`, `workshop` or `outreach` to choose the heading it appears under (`with:` and `role:` are optional).
 
 ## 5. Add a blog post
 

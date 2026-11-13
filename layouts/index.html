@@ -135,17 +135,26 @@
 <section id="talks" class="band band-soft section" aria-labelledby="talks-h">
   <div class="wrap split">
     <h2 id="talks-h" class="section-title">Talks</h2>
-    <ul class="split-main dated">
-      {{- range . }}
-      <li>
-        <span class="date">{{ .date }}</span>
-        <div>
-          {{ with .role }}<span class="role">{{ . }}:</span> {{ end }}<span class="item-title">“{{ .title }}”</span>{{ with .with }} <span class="meta">with {{ . }}</span>{{ end }}
-          <p class="meta">{{ .venue }}</p>
-        </div>
-      </li>
+    <div class="split-main">
+      {{- $all := . }}
+      {{- $groups := slice (dict "key" "invited" "label" "Invited talks") (dict "key" "conference" "label" "Conference presentations") (dict "key" "workshop" "label" "Workshop facilitation") (dict "key" "outreach" "label" "Outreach & professional workshops") }}
+      {{- range $g := $groups }}
+      {{- with where $all "type" $g.key }}
+      <h3 class="sub">{{ $g.label }}</h3>
+      <ul class="dated">
+        {{- range . }}
+        <li>
+          <span class="date">{{ .date }}</span>
+          <div>
+            {{ with .role }}<span class="role">{{ . }}:</span> {{ end }}<span class="item-title">“{{ .title }}”</span>{{ with .with }} <span class="meta">with {{ . }}</span>{{ end }}
+            <p class="meta">{{ .venue }}</p>
+          </div>
+        </li>
+        {{- end }}
+      </ul>
       {{- end }}
-    </ul>
+      {{- end }}
+    </div>
   </div>
 </section>
 {{- end }}
